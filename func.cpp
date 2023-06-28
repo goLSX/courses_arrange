@@ -19,17 +19,17 @@ void mainmenu()
     char key;
 
     printf("\n\n\n\n");
-    printf("		     	    »¶Ó­Ê¹ÓÃ¿Î³Ì±àÅÅÏµÍ³	               \n\n\n");
+    printf("		     	    æ¬¢è¿ä½¿ç”¨è¯¾ç¨‹ç¼–æ’ç³»ç»Ÿ	               \n\n\n");
     printf("______________________________________________________________________\n");
-    printf("			     1. ²é¿´¿Î³ÌĞÅÏ¢        			  \n");
+    printf("			     1. æŸ¥çœ‹è¯¾ç¨‹ä¿¡æ¯        			  \n");
     printf("______________________________________________________________________\n");
-    printf("	 		     2. ĞŞ¸Ä¿Î³ÌĞÅÏ¢                		  \n");
-    printf("______________________________________________________________________                   20¼¶¼ÆËã»ú¿ÆÑ§Óë¼¼Êõ1°à ÁÖÊ¢öÎ\n");
-    printf("        		     3. ¾ùÔÈ°²ÅÅ¿Î³Ì                   		  \n");
-    printf("______________________________________________________________________                              3120004707  \n");
-    printf("        		     4. ¾¡¿ì°²ÅÅ¿Î³Ì           			  \n");
+    printf("	 		     2. ä¿®æ”¹è¯¾ç¨‹ä¿¡æ¯                		  \n");
     printf("______________________________________________________________________\n");
-    printf("        		     5. ¹Ø±Õ³ÌĞò               			  \n");
+    printf("        		     3. å‡åŒ€å®‰æ’è¯¾ç¨‹                   		  \n");
+    printf("______________________________________________________________________\n");
+    printf("        		     4. å°½å¿«å®‰æ’è¯¾ç¨‹           			  \n");
+    printf("______________________________________________________________________\n");
+    printf("        		     5. å…³é—­ç¨‹åº               			  \n");
     printf("______________________________________________________________________\n");
     printf("\n\n\n\n\t ") ;
     key=getch();
@@ -55,7 +55,7 @@ void mainmenu()
 	case 5:		exit(0);
 
 	default :
-			cout << "¸ÃÑ¡ÏîÎŞĞ§,Çë°´ÈÎÒâ¼ü»ØÖ÷²Ëµ¥" << endl;
+			cout << "è¯¥é€‰é¡¹æ— æ•ˆ,è¯·æŒ‰ä»»æ„é”®å›ä¸»èœå•" << endl;
 			key=getch();
 			system("cls");
 			break;
@@ -66,7 +66,7 @@ void mainmenu()
 
 
 
-int Locate(char* ch)		//½«C1C2C3¡­¡­µÈ ±äÎª0 1 2...     ¿Î³ÌºÅ¶ÔÓ¦µÄÎ»Ğò
+int Locate(char* ch)		//å°†C1C2C3â€¦â€¦ç­‰ å˜ä¸º0 1 2...     è¯¾ç¨‹å·å¯¹åº”çš„ä½åº
 {
 	return (2 == strlen(ch)) ? ch[1] - '1' : (ch[1] - '0') * 10 + ch[2] - '1';
 }
@@ -75,19 +75,19 @@ int Locate(char* ch)		//½«C1C2C3¡­¡­µÈ ±äÎª0 1 2...     ¿Î³ÌºÅ¶ÔÓ¦µÄÎ»Ğò
 
 void Read_file()
 {
-	FILE* fp = fopen("./Êı¾İ.txt", "r");
+	FILE* fp = fopen("./æ•°æ®.txt", "r");
 	if (NULL == fp)
 	{
-		printf("Î´ÕÒµ½ÎÄ¼ş,¿ÉÄÜÎÄ¼şÂ·¾¶ÓĞÎó£¡£¡£¡");
+		printf("æœªæ‰¾åˆ°æ–‡ä»¶,å¯èƒ½æ–‡ä»¶è·¯å¾„æœ‰è¯¯ï¼ï¼ï¼");
 		exit(1);
 	}
 
 	G.mes=(Message*)malloc(sizeof(Message));
 
-	fscanf(fp,"%d%d%d",&G.mes->term_num,&G.mes->max_credit,&G.VexNum); 	//¶ÁÈ¡Ñ§ÆÚÊı£¬Ã¿Ñ§ÆÚ×î´óÑ§·Ö£¬¿Î³Ì×ÜÊı
+	fscanf(fp,"%d%d%d",&G.mes->term_num,&G.mes->max_credit,&G.VexNum); 	//è¯»å–å­¦æœŸæ•°ï¼Œæ¯å­¦æœŸæœ€å¤§å­¦åˆ†ï¼Œè¯¾ç¨‹æ€»æ•°
 	if(G.VexNum > MaxClass || G.mes->term_num > MaxTerm || G.mes->max_credit > MaxCredit)
 	{
-		cout << "¿Î³Ì×ÜÊı»òÑ§ÆÚÊıÄ¿»òÃ¿Ñ§ÆÚ×î´óÑ§·Ö³¬¹ıÉÏÏŞ" <<endl;
+		cout << "è¯¾ç¨‹æ€»æ•°æˆ–å­¦æœŸæ•°ç›®æˆ–æ¯å­¦æœŸæœ€å¤§å­¦åˆ†è¶…è¿‡ä¸Šé™" <<endl;
 		fclose(fp);
 		exit(1);
 	}
@@ -98,21 +98,21 @@ void Read_file()
 	for(;i<G.VexNum;i++)
 		G.Vex[i].FirstArc=nullptr;
 
-	for (i = 0; i < G.VexNum; i++)		//¶ÁÈ¡¿Î³ÌĞÅÏ¢
+	for (i = 0; i < G.VexNum; i++)		//è¯»å–è¯¾ç¨‹ä¿¡æ¯
 	{
-		fscanf(fp, "%s%d", G.Vex[i].data,&G.Vex[i].credit);		//¶ÁÈ¡¿Î³ÌÃû³ÆºÍÑ§·Ö
+		fscanf(fp, "%s%d", G.Vex[i].data,&G.Vex[i].credit);		//è¯»å–è¯¾ç¨‹åç§°å’Œå­¦åˆ†
 
-		while ('\n' != fgetc(fp)) {		//¸ù¾İÏÈĞŞ¿Î³Ì½¨Á¢ÁÚ½Ó±í½áµã
+		while ('\n' != fgetc(fp)) {		//æ ¹æ®å…ˆä¿®è¯¾ç¨‹å»ºç«‹é‚»æ¥è¡¨ç»“ç‚¹
 			char str[4];
 			int s;
 			fscanf(fp, "%s", str);
 			s = Locate(str);
-			if (s < 0 || s > G.VexNum) {		//ÅĞ¶Ï¿Î³ÌÊÇ·ñÓĞ´íÎó
-				printf("%s¿Î³Ì´íÎó£¬±¾×¨ÒµÎŞÆäÏÈĞŞ¿Î³Ì£¡\n", G.Vex[i].data);
+			if (s < 0 || s > G.VexNum) {		//åˆ¤æ–­è¯¾ç¨‹æ˜¯å¦æœ‰é”™è¯¯
+				printf("%sè¯¾ç¨‹é”™è¯¯ï¼Œæœ¬ä¸“ä¸šæ— å…¶å…ˆä¿®è¯¾ç¨‹ï¼\n", G.Vex[i].data);
 				fclose(fp);
 				exit(1);
 			}
-			AdjVexNode* p = (AdjVexNode*)malloc(sizeof(AdjVexNode));		//¸üĞÂÁÚ½Ó±í½áµã
+			AdjVexNode* p = (AdjVexNode*)malloc(sizeof(AdjVexNode));		//æ›´æ–°é‚»æ¥è¡¨ç»“ç‚¹
 			p->AdjVex = s;
 			p->Next = G.Vex[i].FirstArc;
 			G.Vex[i].FirstArc = p;
@@ -122,7 +122,7 @@ void Read_file()
 	fclose(fp);
 
 	AdjVexNode * p;
-	for (i=0; i<G.VexNum; i++)		//³õÊ¼»¯Èë¶È
+	for (i=0; i<G.VexNum; i++)		//åˆå§‹åŒ–å…¥åº¦
 		G.Vex[i].In_degree=0;
 	for(i=0;i<G.VexNum;i++)
 	{
@@ -140,20 +140,20 @@ void Read_file()
 
 void Print_message()
 {
-	printf("Ñ§ÆÚ×ÜÊı :  %d \t",G.mes->term_num);
-	printf("Ã¿Ñ§ÆÚ×î´óÑ§·Ö £º %d \t",G.mes->max_credit);
-	printf("±ØĞŞ¿Î³ÌÊıÁ¿ £º   %d \n",G.VexNum);
+	printf("å­¦æœŸæ€»æ•° :  %d \t",G.mes->term_num);
+	printf("æ¯å­¦æœŸæœ€å¤§å­¦åˆ† ï¼š %d \t",G.mes->max_credit);
+	printf("å¿…ä¿®è¯¾ç¨‹æ•°é‡ ï¼š   %d \n",G.VexNum);
 
-	cout << "\n\t\t\t±¾×¨ÒµÌá¹©¿Î³Ì£º\n";
-	for(int i=0;i<G.VexNum;i++)		//Ñ­»·²»Í£
+	cout << "\n\t\t\tæœ¬ä¸“ä¸šæä¾›è¯¾ç¨‹ï¼š\n";
+	for(int i=0;i<G.VexNum;i++)		//å¾ªç¯ä¸åœ
 	{	printf("______________________________________________________________________\n");
-		printf("¿Î³ÌºÅ£ºC%d\t\tÑ§·Ö £º %d\t\tÏÈĞŞ¿Î³Ì£º ",i+1,G.Vex[i].credit);
+		printf("è¯¾ç¨‹å·ï¼šC%d\t\tå­¦åˆ† ï¼š %d\t\tå…ˆä¿®è¯¾ç¨‹ï¼š ",i+1,G.Vex[i].credit);
 		for (AdjVexNode* p = G.Vex[i].FirstArc; p!=nullptr; p = p->Next)
 			printf("C%d  ",p->AdjVex+1);
 		printf("\n");
 	}
 
-	cout << "\n\t\t\t\t°´ÈÎÒâ¼ü»ØÖ÷²Ëµ¥" <<endl;
+	cout << "\n\t\t\t\tæŒ‰ä»»æ„é”®å›ä¸»èœå•" <<endl;
 	getch();
 	system("cls");
 	mainmenu();
@@ -162,46 +162,46 @@ void Print_message()
 
 void Adjust_message()
 {
-	printf("ÔÊĞíĞŞ¸ÄµÄÄÚÈİÓĞ: 1.Ñ§ÆÚ×ÜÊı  2.¸öÈËÃ¿Ñ§ÆÚ×î´óÑ§·Ö ");
-	printf("\n\nÇëÑ¡ÔñÒªĞŞ¸ÄµÄÄÚÈİ ,»ò°´ÆäËû¼üÈ¡ÏûĞŞ¸Ä\n\n");
+	printf("å…è®¸ä¿®æ”¹çš„å†…å®¹æœ‰: 1.å­¦æœŸæ€»æ•°  2.ä¸ªäººæ¯å­¦æœŸæœ€å¤§å­¦åˆ† ");
+	printf("\n\nè¯·é€‰æ‹©è¦ä¿®æ”¹çš„å†…å®¹ ,æˆ–æŒ‰å…¶ä»–é”®å–æ¶ˆä¿®æ”¹\n\n");
 	char key=getch();
 	key=key-'0';
 
 	if(key==1)
 	{	int term;
-		printf("ÇëÊäÈëÑ§ÆÚ×ÜÊı£º");
+		printf("è¯·è¾“å…¥å­¦æœŸæ€»æ•°ï¼š");
 		scanf("%d",&term);
 		if(term > MaxTerm || term < 1)
 		{
-			cout << "\nÊäÈëµÄÑ§ÆÚÊı²»ºÏ·¨ (´óÓÚ×î´óÔÊĞíµÄÑ§ÆÚÊı »ò Ğ¡ÓÚ1 »ò ²»ÊÇÕıÕûÊı)\n" <<endl;
-			cout<< "Çë°´ÈÎÒâ¼ü»ØÖ÷²Ëµ¥"<< endl;
+			cout << "\nè¾“å…¥çš„å­¦æœŸæ•°ä¸åˆæ³• (å¤§äºæœ€å¤§å…è®¸çš„å­¦æœŸæ•° æˆ– å°äº1 æˆ– ä¸æ˜¯æ­£æ•´æ•°)\n" <<endl;
+			cout<< "è¯·æŒ‰ä»»æ„é”®å›ä¸»èœå•"<< endl;
 			getch();
 			system("cls");
 			mainmenu();
 		}
 		G.mes->term_num=term;
-		cout << "\nĞŞ¸Ä³É¹¦\n" <<endl;
-		cout << "°´ÈÎÒâ¼ü»ØÖ÷²Ëµ¥" <<endl;
+		cout << "\nä¿®æ”¹æˆåŠŸ\n" <<endl;
+		cout << "æŒ‰ä»»æ„é”®å›ä¸»èœå•" <<endl;
 		File_Update();
 		getch();
 	}
 	else if(key==2)
 	{
 		int credit;
-		printf("ÇëÊäÈë¸öÈËÃ¿Ñ§ÆÚ×î´óÑ§·Ö£º");
+		printf("è¯·è¾“å…¥ä¸ªäººæ¯å­¦æœŸæœ€å¤§å­¦åˆ†ï¼š");
 		scanf("%d",&credit);
 		if( credit < 1 || credit > MaxCredit)
 		{
-			cout << "\nÊäÈëµÄÑ§·ÖÊı²»ºÏ·¨ (Ğ¡ÓÚ1»ò´óÓÚ30)\n" <<endl;
-			cout<< "Çë°´ÈÎÒâ¼ü»ØÖ÷²Ëµ¥"<< endl;
+			cout << "\nè¾“å…¥çš„å­¦åˆ†æ•°ä¸åˆæ³• (å°äº1æˆ–å¤§äº30)\n" <<endl;
+			cout<< "è¯·æŒ‰ä»»æ„é”®å›ä¸»èœå•"<< endl;
 			getch();
 			system("cls");
 			mainmenu();
 		}
 
 		G.mes->max_credit=credit;
-		cout << "\nĞŞ¸Ä³É¹¦\n" <<endl;
-		cout << "°´ÈÎÒâ¼ü»ØÖ÷²Ëµ¥" <<endl;
+		cout << "\nä¿®æ”¹æˆåŠŸ\n" <<endl;
+		cout << "æŒ‰ä»»æ„é”®å›ä¸»èœå•" <<endl;
 		File_Update();
 		getch();
 	}
@@ -216,7 +216,7 @@ void Adjust_message()
 void File_Update()
 {
 	ofstream ofs;
-	ofs.open("./Êı¾İ.txt",ios::in | ios::out | ios::binary);
+	ofs.open("./æ•°æ®.txt",ios::in | ios::out | ios::binary);
 
 	ofs << G.mes->term_num << " "<< G.mes->max_credit << " " << G.VexNum << "\n" ;
 	ofs.close();
@@ -230,7 +230,7 @@ void Arrange_Selete(int choice)
 	Top_Sort(result3,2);
 	Top_Sort(result4,3);
 	Print_Top_Sort_Result();
-	cout << "\n\n\nÇëÊäÈëÄãÑ¡ÔñµÄ¿Î³Ì°²ÅÅÏÈºóË³Ğò£º";
+	cout << "\n\n\nè¯·è¾“å…¥ä½ é€‰æ‹©çš„è¯¾ç¨‹å®‰æ’å…ˆåé¡ºåºï¼š";
 	char key=getch();
 
 	if(key=='1')
@@ -244,7 +244,7 @@ void Arrange_Selete(int choice)
 
 	else
 	{
-		cout<<"Ñ¡ÔñÓĞÎó£¬Çë°´ÈÎÒâ¼ü»ØÖ÷²Ëµ¥";
+		cout<<"é€‰æ‹©æœ‰è¯¯ï¼Œè¯·æŒ‰ä»»æ„é”®å›ä¸»èœå•";
 		getch();
 		mainmenu();
 	}
@@ -255,7 +255,7 @@ void Arrange_Selete(int choice)
 void Arrange(VexNode *result,int choice)
 {
 	system("cls");
-	FILE *fp=fopen("./¸÷Ñ§ÆÚ¿Î³Ì°²ÅÅ½á¹û.txt","w");
+	FILE *fp=fopen("./å„å­¦æœŸè¯¾ç¨‹å®‰æ’ç»“æœ.txt","w");
 	int i=0,j,k,course_num,per_max_num,Sumcredit,tag;
 
 	if(choice==0)
@@ -273,12 +273,12 @@ void Arrange(VexNode *result,int choice)
 	{
 		if(i==G.VexNum)	break;
 
-		fprintf(fp, "\nµÚ%d¸öÑ§ÆÚµÄ¿Î³ÌÎª£º", k+1);
-		printf("\nµÚ%d¸öÑ§ÆÚµÄ¿Î³ÌÎª£º", k + 1);
-		Sumcredit=0;       //±¾Ñ§ÆÚ°²ÅÅ¿Î³ÌµÄ×ÜÑ§·Ö
-		course_num=0;	 //±¾Ñ§ÆÚ°²ÅÅ¿Î³ÌµÄ×ÜÊı
-		p=result[i].FirstArc;  //ÏÈĞŞ¿ÎÖ¸Õë
-		tag=0;          //±êÖ¾±¾Ñ§ÆÚÊÇ·ñÓĞ¸Ã¿Î³ÌµÄÏÈĞŞ¿Î³Ì
+		fprintf(fp, "\nç¬¬%dä¸ªå­¦æœŸçš„è¯¾ç¨‹ä¸ºï¼š", k+1);
+		printf("\nç¬¬%dä¸ªå­¦æœŸçš„è¯¾ç¨‹ä¸ºï¼š", k + 1);
+		Sumcredit=0;       //æœ¬å­¦æœŸå®‰æ’è¯¾ç¨‹çš„æ€»å­¦åˆ†
+		course_num=0;	 //æœ¬å­¦æœŸå®‰æ’è¯¾ç¨‹çš„æ€»æ•°
+		p=result[i].FirstArc;  //å…ˆä¿®è¯¾æŒ‡é’ˆ
+		tag=0;          //æ ‡å¿—æœ¬å­¦æœŸæ˜¯å¦æœ‰è¯¥è¯¾ç¨‹çš„å…ˆä¿®è¯¾ç¨‹
 		while(Sumcredit + result[i].credit <= G.mes->max_credit  && tag==0 && course_num<per_max_num)
 		{
 			while(p!=nullptr && tag==0)
@@ -312,17 +312,17 @@ void Arrange(VexNode *result,int choice)
 
 	if(k>G.mes->term_num)
 	{
-		fp=fopen("./¸÷Ñ§ÆÚ¿Î³Ì°²ÅÅ½á¹û.txt","w");
-		fprintf(fp,"%s","¸Ã¿Î³Ì°²ÅÅÏÈºóË³ĞòÏÂ£¬´Ë²ßÂÔÎŞ½â,ÒòÎª°²ÅÅËùĞèÑ§ÆÚÊı³¬¹ı×î´óÑ§ÆÚÊı");
+		fp=fopen("./å„å­¦æœŸè¯¾ç¨‹å®‰æ’ç»“æœ.txt","w");
+		fprintf(fp,"%s","è¯¥è¯¾ç¨‹å®‰æ’å…ˆåé¡ºåºä¸‹ï¼Œæ­¤ç­–ç•¥æ— è§£,å› ä¸ºå®‰æ’æ‰€éœ€å­¦æœŸæ•°è¶…è¿‡æœ€å¤§å­¦æœŸæ•°");
 		fclose(fp);
-		cout << "\n\n\n¸Ã¿Î³Ì°²ÅÅÏÈºóË³ĞòÏÂ£¬´Ë²ßÂÔÎŞ½â,ÒòÎª°²ÅÅËùĞèÑ§ÆÚÊı³¬¹ı×î´óÑ§ÆÚÊı\n\n\n";
-		cout <<"Çë°´ÈÎÒâ¼ü»ØÖ÷²Ëµ¥" <<endl;
+		cout << "\n\n\nè¯¥è¯¾ç¨‹å®‰æ’å…ˆåé¡ºåºä¸‹ï¼Œæ­¤ç­–ç•¥æ— è§£,å› ä¸ºå®‰æ’æ‰€éœ€å­¦æœŸæ•°è¶…è¿‡æœ€å¤§å­¦æœŸæ•°\n\n\n";
+		cout <<"è¯·æŒ‰ä»»æ„é”®å›ä¸»èœå•" <<endl;
 		getch();
 		system("cls");
 		mainmenu();
 	}
 
-	cout << "\n\n\n ¿Î³Ì°²ÅÅĞÅÏ¢ÒÑ¾­´æÈëµ±Ç°Ä¿Â¼ÏÂ£¬¡°¸÷Ñ§ÆÚ¿Î³Ì°²ÅÅ½á¹û.txt¡± \n\nÇë°´ÈÎÒâ¼ü»ØÖ÷²Ëµ¥";
+	cout << "\n\n\n è¯¾ç¨‹å®‰æ’ä¿¡æ¯å·²ç»å­˜å…¥å½“å‰ç›®å½•ä¸‹ï¼Œâ€œå„å­¦æœŸè¯¾ç¨‹å®‰æ’ç»“æœ.txtâ€ \n\nè¯·æŒ‰ä»»æ„é”®å›ä¸»èœå•";
 	getch();
 	system("cls");
 	mainmenu();
@@ -444,7 +444,7 @@ void Top_Sort(VexNode* result,int choice)
 
 	if(i <G.VexNum)
 	{
-		cout<< "ÍØÆËÅÅĞòÊ§°Ü£¬¿Î³ÌÏÈĞŞ¹ØÏµ¿ÉÄÜ´æÔÚ»·Â·£¬Çë°´ÈÎÒâ¼ü»ØÖ÷²Ëµ¥\n";
+		cout<< "æ‹“æ‰‘æ’åºå¤±è´¥ï¼Œè¯¾ç¨‹å…ˆä¿®å…³ç³»å¯èƒ½å­˜åœ¨ç¯è·¯ï¼Œè¯·æŒ‰ä»»æ„é”®å›ä¸»èœå•\n";
 		getch();
 		system("cls");
 		mainmenu();
@@ -459,7 +459,7 @@ void Top_Sort(VexNode* result,int choice)
 		}
 		else
 		{
-			cout << "ÍØÆËÅÅĞòµ¯Õ»Ê§°Ü,Çë°´ÈÎÒâ¼ü»ØÖ÷²Ëµ¥" << endl;
+			cout << "æ‹“æ‰‘æ’åºå¼¹æ ˆå¤±è´¥,è¯·æŒ‰ä»»æ„é”®å›ä¸»èœå•" << endl;
 			getch();
 			mainmenu();
 		}
@@ -471,26 +471,26 @@ void Top_Sort(VexNode* result,int choice)
 
 void Print_Top_Sort_Result()
 {
-	printf("¸÷¿Î³Ì°²ÅÅÏÈºóË³ĞòÎª:\n");
-	cout << "Ñ¡Ôñ1£º" ;
+	printf("å„è¯¾ç¨‹å®‰æ’å…ˆåé¡ºåºä¸º:\n");
+	cout << "é€‰æ‹©1ï¼š" ;
 	for(int i=0;i<G.VexNum;i++)
 	{
 		cout<< result1[i].data<< "  " ;
 	}
 
-	cout << "\n\nÑ¡Ôñ2£º" ;
+	cout << "\n\né€‰æ‹©2ï¼š" ;
 	for(int i=0;i<G.VexNum;i++)
 	{
 		cout<< result2[i].data<< "  " ;
 	}
 
-	cout << "\n\nÑ¡Ôñ3£º" ;
+	cout << "\n\né€‰æ‹©3ï¼š" ;
 	for(int i=0;i<G.VexNum;i++)
 	{
 		cout<< result3[i].data<< "  " ;
 	}
 
-	cout << "\n\nÑ¡Ôñ4£º" ;
+	cout << "\n\né€‰æ‹©4ï¼š" ;
 	for(int i=0;i<G.VexNum;i++)
 	{
 		cout<< result4[i].data<< "  " ;
