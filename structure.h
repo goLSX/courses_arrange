@@ -1,36 +1,35 @@
 #ifndef STRUCTURE_H_INCLUDED
 #define STRUCTURE_H_INCLUDED
 
+#define MaxClass  100		//è¯¾ç¨‹æ€»æ•°ä¸è¶…è¿‡100
+#define MaxTerm   12		//å­¦æœŸæ€»æ•°ä¸è¶…è¿‡12
+#define MaxCredit 30            //æ¯å­¦æœŸå­¦åˆ†ä¸è¶…è¿‡30
 
 
-#define MaxClass  100		//¿Î³Ì×ÜÊı²»³¬¹ı100
-#define MaxTerm   12		//Ñ§ÆÚ×ÜÊı²»³¬¹ı12
-#define MaxCredit 30            //Ã¿Ñ§ÆÚÑ§·Ö²»³¬¹ı30
-
-
-//   ÁÚ½Ó±í±íÊ¾
+//   é‚»æ¥è¡¨è¡¨ç¤º
 typedef struct AdjVexNode {
-	int AdjVex;			//ÁÚ½ÓµãÎ»Ğò
-	AdjVexNode * Next;		//Ö¸ÏòÏÂÒ»¸öÁÚ½ÓµãµÄÖ¸Õë
-}AdjVexNode;				//ÁÚ½Ó±í½áµã
+	int AdjVex;			//é‚»æ¥ç‚¹ä½åº
+	AdjVexNode * Next;		//æŒ‡å‘ä¸‹ä¸€ä¸ªé‚»æ¥ç‚¹çš„æŒ‡é’ˆ
+}AdjVexNode;				//é‚»æ¥è¡¨ç»“ç‚¹
 
 
-typedef struct  {			//¶¥µã±í½áµã
-	char data[3];			//¿Î³Ì±àºÅ
-	int credit;			//½ÚµãÑ§·Ö£¨Ã¿ÃÅ¿ÎÑ§·Ö£©
-	AdjVexNode* FirstArc;		//Ö¸ÏòÁÚ½Ó±íµÚÒ»¸öÁÚ±ß½ÚµãµÄÖ¸ÕëÓò
-	int In_degree;			//¿Î³ÌÈë¶È
-}VexNode;				//Í¼½Úµã
+typedef struct  {			//é¡¶ç‚¹è¡¨ç»“ç‚¹
+	char data[3];			//è¯¾ç¨‹ç¼–å·
+	int credit;			//èŠ‚ç‚¹å­¦åˆ†ï¼ˆæ¯é—¨è¯¾å­¦åˆ†ï¼‰
+	AdjVexNode* FirstArc;		//æŒ‡å‘é‚»æ¥è¡¨ç¬¬ä¸€ä¸ªé‚»è¾¹èŠ‚ç‚¹çš„æŒ‡é’ˆåŸŸ
+	int In_degree;			//è¯¾ç¨‹å…¥åº¦
+}VexNode;				//å›¾èŠ‚ç‚¹
 
 typedef struct  {
-	int term_num;			//Ñ§ÆÚÊı
-	int max_credit;			//Ã¿Ñ§ÆÚÑ§·ÖÉÏÏŞ
-}Message;				//Ñ§ÆÚĞÅÏ¢
+	int term_num;			//å­¦æœŸæ•°
+	int max_credit;			//æ¯å­¦æœŸå­¦åˆ†ä¸Šé™
+}Message;				//å­¦æœŸä¿¡æ¯
 
-typedef struct  {			//Í¼
-	VexNode* Vex;			//ÁÚ½Ó±íÓò
-	int VexNum;			//½ÚµãÊı
-	int ArcNum;			//±ßÊı
-	Message* mes;			//Ã¿Ñ§ÆÚµÄĞÅÏ¢(ÔÊĞíĞŞ¸Ä)
+typedef struct  {			//å›¾
+	VexNode* Vex;			//é‚»æ¥è¡¨åŸŸ
+	int VexNum;			//èŠ‚ç‚¹æ•°
+	int ArcNum;			//è¾¹æ•°
+	Message* mes;			//æ¯å­¦æœŸçš„ä¿¡æ¯(å…è®¸ä¿®æ”¹)
 }Class_arrange_Graph;
+
 #endif // STRUCTURE_H_INCLUDED
