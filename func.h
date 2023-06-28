@@ -2,24 +2,24 @@
 #define FUNC_H_INCLUDED
 #include "structure.h"
 
-void mainmenu();	//....
+void mainmenu();	
 
-int Locate(char* ch);			//ok
+int Locate(char* ch);			
 
-void Read_file();	//ok
+void Read_file();	
 
-void Print_message(); //ok
+void Print_message(); 
 
-void Adjust_message(); //ok
+void Adjust_message(); 
 
-void File_Update();   //ok
+void File_Update();   
 
-void Arrange_Selete(int choice);		//ok
+void Arrange_Selete(int choice);		
 
 void Arrange(VexNode *result,int choice);
 
-void Top_Sort(VexNode *result,int choice);	//ok
+void Top_Sort(VexNode *result,int choice);	
 
-void Print_Top_Sort_Result();   //ok
+void Print_Top_Sort_Result();  
 
 #endif // FUNC_H_INCLUDED
