@@ -1,8 +1,6 @@
 #include <iostream>
 #include "structure.h"
 #include "func.h"
-
-
 using namespace std;
 
 VexNode result1[100];
@@ -15,6 +13,5 @@ int main()
 {
 	Read_file();
 	mainmenu();
-
     return 0;
 }
